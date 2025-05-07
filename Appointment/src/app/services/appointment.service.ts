@@ -16,7 +16,7 @@ export class AppointmentService {
     const token = this.authService.getToken();
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'x-auth-token': `${token}`
+      'x-auth-token': token || ''
     });
   }
 

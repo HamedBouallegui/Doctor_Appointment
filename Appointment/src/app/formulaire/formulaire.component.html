@@ -49,6 +49,21 @@
       <div class="consultation-form">
         <h3>Appointment Request Form</h3>
         
+        <!-- Add error message display -->
+        <div *ngIf="error" class="error-message" style="color: #d93025; background-color: #fdecea; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
+          {{ error }}
+        </div>
+        
+        <!-- Add success message display -->
+        <div *ngIf="successMessage" class="success-message" style="color: #0f5132; background-color: #d1e7dd; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
+          {{ successMessage }}
+        </div>
+        
+        <!-- Add loading indicator -->
+        <div *ngIf="loading" class="loading-message" style="text-align: center; margin-bottom: 20px;">
+          <p>Submitting your appointment request...</p>
+        </div>
+        
         <form (submit)="submitForm($event)">
           <div class="form-row">
             <div class="form-group">
@@ -79,11 +94,10 @@
               <label for="department">Department*</label>
               <select id="department" name="department" required>
                 <option value="" disabled selected>Select department</option>
+                <option value="General Consultation">General Consultation</option>
+                <option value="Dental Care">Dental Care</option>
+                <option value="Pediatrics">Pediatrics</option>
                 <option value="Cardiology">Cardiology</option>
-                <option value="Dental">Dental</option>
-                <option value="Neurology">Neurology</option>
-                <option value="Pediatric">Pediatric</option>
-                <option value="Pulmonary">Pulmonary</option>
               </select>
             </div>
             
@@ -130,7 +144,10 @@
             <label for="terms">I agree to the terms and conditions*</label>
           </div>
           
-          <button type="submit" class="submit-btn">Request Appointment</button>
+          <!-- Update the submit button to show loading state -->
+          <button type="submit" class="submit-btn" [disabled]="loading">
+            {{ loading ? 'Submitting...' : 'Request Appointment' }}
+          </button>
         </form>
       </div>
     </div>

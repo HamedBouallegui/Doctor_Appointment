@@ -201,3 +201,27 @@ th {
 .nav-links button:active {
   transform: scale(0.98);
 }
+
+/* Add these styles to your existing CSS */
+.loading-indicator {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  color: #3498db;
+}
+
+.error-message {
+  background-color: #fdecea;
+  color: #d93025;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.no-appointments {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}

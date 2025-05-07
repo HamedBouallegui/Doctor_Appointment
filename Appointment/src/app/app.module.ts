@@ -24,6 +24,7 @@ import { AppointmentListComponent } from './components/appointment-list/appointm
 // Add these imports
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ReactiveFormsModule
   ],
   providers: [
+    AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
