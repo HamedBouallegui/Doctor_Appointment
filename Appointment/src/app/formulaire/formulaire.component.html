@@ -1,0 +1,140 @@
+<app-navbar></app-navbar>
+
+<!-- Form Hero Section -->  
+<div class="form-hero">
+  <div class="form-hero-content">
+    <h1>Book a Consultation</h1>
+    <div class="breadcrumb">
+      <span>Home</span> / <span>Appointment Form</span>
+    </div>
+  </div>
+</div>
+
+<!-- Appointment Form Section -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-container">
+      <div class="form-info">
+        <h2>Schedule Your Visit</h2>
+        <p>Book a consultation with our specialists. Please fill out the form with your details and medical concerns, and we'll schedule your appointment with the appropriate specialist.</p>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <h4>Emergency Contact</h4>
+              <p>+123 456 7890</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Working Hours</h4>
+              <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
+              <p>Sat: 9:00 AM - 2:00 PM</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>123 Medical Center Blvd, City, Country</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="consultation-form">
+        <h3>Appointment Request Form</h3>
+        
+        <form (submit)="submitForm($event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name*</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number*</label>
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="dob">Date of Birth*</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="department">Department*</label>
+              <select id="department" name="department" required>
+                <option value="" disabled selected>Select department</option>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Dental">Dental</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Pediatric">Pediatric</option>
+                <option value="Pulmonary">Pulmonary</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date*</label>
+              <input type="date" id="preferredDate" name="preferredDate" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time*</label>
+              <select id="preferredTime" name="preferredTime" required>
+                <option value="" disabled selected>Select time</option>
+                <option value="Morning">Morning (8:00 AM - 12:00 PM)</option>
+                <option value="Afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                <option value="Evening">Evening (4:00 PM - 6:00 PM)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="visitType">Visit Type*</label>
+              <select id="visitType" name="visitType" required>
+                <option value="" disabled selected>Select visit type</option>
+                <option value="New Patient">New Patient</option>
+                <option value="Follow-up">Follow-up</option>
+                <option value="Emergency">Emergency</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="symptoms">Symptoms/Concerns*</label>
+            <textarea id="symptoms" name="symptoms" rows="6" placeholder="Please describe your symptoms or concerns" required></textarea>
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="insurance" name="insurance">
+            <label for="insurance">I have health insurance</label>
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the terms and conditions*</label>
+          </div>
+          
+          <button type="submit" class="submit-btn">Request Appointment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

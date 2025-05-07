@@ -1,0 +1,88 @@
+<div class="admin-dashboard">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h2>Admin Dashboard</h2>
+    </div>
+    <ul class="nav-links">
+      <li [class.active]="currentService === 'overview'" (click)="switchService('overview')">
+        <i class="dashboard-icon">📊</i> Overview
+      </li>
+      <li [class.active]="currentService === 'general'" (click)="switchService('general')">
+        <i class="dashboard-icon">👨‍⚕️</i> General Consultation
+      </li>
+      <li [class.active]="currentService === 'dental'" (click)="switchService('dental')">
+        <i class="dashboard-icon">🦷</i> Dental Care
+      </li>
+      <li [class.active]="currentService === 'pediatrics'" (click)="switchService('pediatrics')">
+        <i class="dashboard-icon">👶</i> Pediatrics
+      </li>
+      <li [class.active]="currentService === 'cardiology'" (click)="switchService('cardiology')">
+        <i class="dashboard-icon">🫀</i> Cardiology
+      </li>
+      <button type="submit" class="nav-links" routerLink="/">Log Out</button>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <header class="content-header">
+      <h1>{{getCurrentServiceTitle()}}</h1>
+      <div class="header-actions">
+        <input type="date" class="date-filter">
+        <button class="refresh-btn">Refresh</button>
+      </div>
+    </header>
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <h3>Total Appointments</h3>
+        <p class="stat-number">{{stats.totalAppointments}}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Today's Appointments</h3>
+        <p class="stat-number">{{stats.todayAppointments}}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pending Approval</h3>
+        <p class="stat-number">{{stats.pendingApproval}}</p>
+      </div>
+      <div class="stat-card">
+        <h3>Available Slots</h3>
+        <p class="stat-number">{{stats.availableSlots}}</p>
+      </div>
+    </div>
+
+    <div class="appointments-table">
+      <h2>Recent Appointments</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments">
+            <td>{{appointment.patientName}}</td>
+            <td>{{appointment.date}}</td>
+            <td>{{appointment.time}}</td>
+            <td>{{appointment.service}}</td>
+            <td>
+              <span [class]="'status-' + appointment.status.toLowerCase()">
+                {{appointment.status}}
+              </span>
+            </td>
+            <td>
+              <button class="action-btn approve" *ngIf="appointment.status === 'Pending'">Approve</button>
+              <button class="action-btn reject" *ngIf="appointment.status === 'Pending'">Reject</button>
+              <button class="action-btn view">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

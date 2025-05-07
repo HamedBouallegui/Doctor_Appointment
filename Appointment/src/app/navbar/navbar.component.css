@@ -1,0 +1,101 @@
+/* Top Bar Styles */
+.top-bar {
+  background-color: #0B0B45;
+  color: white;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info span {
+  margin-right: 20px;
+}
+
+.top-right .language-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 15px;
+}
+
+.appointment-btn {
+  background-color: #00FF7F;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+}
+
+/* Navigation Styles */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0B0B45;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #00FF7F;
+}
+
+/* Add responsive styles */
+.connexion-btn {
+  background-color: #0B0B45;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.connexion-btn:hover {
+  background-color: #080830;
+}
+
+/* Make sure nav-icons is properly styled */
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+  .top-bar, .main-nav {
+    padding: 10px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-icons {
+    margin-top: 10px;
+  }
+}

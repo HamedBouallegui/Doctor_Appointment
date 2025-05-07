@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+
+
+ <!-- Hero Section -->  
+<div class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>We take care <br>of your health</h1>
+        <p>Finest doctors go beyond symptoms to treat the root cause of your illness and deliver long-term healing.</p>
+        <button class="appointment-btn" routerLink="/formulaire">Appointment</button>
+      </div>
+      <div class="hero-image">
+        <!-- The doctor image will be added via CSS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Specialists Section -->
+  <section class="specialists">
+    <h1 class="section-title">Meet Our Specialists</h1>
+    <div class="breadcrumb">
+      <span>Home</span> / <span>Doctor</span>
+    </div>
+  
+    <!-- Department Filter -->
+    <div class="department-filter">
+      <button class="filter-btn" [class.active]="isDepartmentActive('All Department')" (click)="filterByDepartment('All Department')">All Department</button>
+      <button class="filter-btn" [class.active]="isDepartmentActive('Cardiology')" (click)="filterByDepartment('Cardiology')">Cardiology</button>
+      <button class="filter-btn" [class.active]="isDepartmentActive('Dental')" (click)="filterByDepartment('Dental')">Dental</button>
+      <button class="filter-btn" [class.active]="isDepartmentActive('Neurology')" (click)="filterByDepartment('Neurology')">Neurology</button>
+      <button class="filter-btn" [class.active]="isDepartmentActive('Pediatric')" (click)="filterByDepartment('Pediatric')">Pediatric</button>
+      <button class="filter-btn" [class.active]="isDepartmentActive('Pulmonary')" (click)="filterByDepartment('Pulmonary')">Pulmonary</button>
+    </div>
+  
+    <!-- Doctors Grid -->
+    <div class="doctors-grid">
+      <div class="doctor-card" *ngFor="let doctor of doctors">
+        <img [src]="doctor.image" [alt]="doctor.name">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <h3>{{doctor.name}}</h3>
+        <p>{{doctor.speciality}}</p>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+
+
+
+  

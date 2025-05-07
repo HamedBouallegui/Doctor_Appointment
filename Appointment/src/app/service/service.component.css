@@ -1,0 +1,298 @@
+/* Service Hero Section */
+.service-hero {
+    background-color: #0B0B45;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  .service-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/appointment-scheduling-solution.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 1;
+  }
+  
+  .service-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .service-hero h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .breadcrumb {
+    color: #ccc;
+  }
+  
+  .breadcrumb span:first-child {
+    color: #4ecca3;
+  }
+  
+  /* Services Overview Section */
+  .services-overview {
+    padding: 80px 0;
+    background-color: #f8fbff;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-title {
+    text-align: center;
+    color: #0B0B45;
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .section-description {
+    text-align: center;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  .service-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #e8f4ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+  }
+  
+  .service-icon i {
+    font-size: 32px;
+    color: #0B0B45;
+  }
+  
+  .service-card h3 {
+    color: #333;
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .service-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .service-link {
+    color: #4ecca3;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .service-link:hover {
+    color: #3db892;
+  }
+  
+  /* Detailed Services Section */
+  .detailed-services {
+    padding: 80px 0;
+    background-color: white;
+  }
+  
+  .service-detail {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px;
+  }
+  
+  .service-detail.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .service-image {
+    flex: 1;
+    height: 400px;
+    background-image: url('../../assets/images/appointment-scheduling-solution.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-image.dental {
+    background-position: center 20%;
+  }
+  
+  .service-image.pediatrics {
+    background-position: center 40%;
+  }
+  
+  .service-image.cardiology {
+    background-position: center 60%;
+  }
+  
+  .service-content {
+    flex: 1;
+  }
+  
+  .service-content h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .separator {
+    width: 80px;
+    height: 4px;
+    background-color: #4ecca3;
+    margin-bottom: 25px;
+  }
+  
+  .service-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+  }
+  
+  .service-features li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .service-features i {
+    color: #4ecca3;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  .appointment-btn {
+    background-color: #4ecca3;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(78, 204, 163, 0.3);
+    margin-top: 10px;
+  }
+  
+  .appointment-btn:hover {
+    background-color: #3db892;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(78, 204, 163, 0.4);
+  }
+  
+  /* Call to Action Section */
+  .cta-section {
+    padding: 80px 0;
+    background-color: #0B0B45;
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .cta-content p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .service-detail {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .service-detail.reverse {
+      flex-direction: column;
+    }
+    
+    .service-image {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .service-hero h1 {
+      font-size: 36px;
+    }
+    
+    .section-title {
+      font-size: 30px;
+    }
+    
+    .service-content h2 {
+      font-size: 28px;
+    }
+    
+    .cta-content h2 {
+      font-size: 30px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .service-hero {
+      padding: 60px 0;
+    }
+    
+    .services-overview,
+    .detailed-services,
+    .cta-section {
+      padding: 60px 0;
+    }
+    
+    .service-detail {
+      margin-bottom: 60px;
+    }
+  }

@@ -1,0 +1,214 @@
+/* Form Hero Section */
+.form-hero {
+  background-color: #0B0B45;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+}
+
+.form-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/appointment-scheduling-solution.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.form-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.form-hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.breadcrumb {
+  color: #ccc;
+}
+
+.breadcrumb span:first-child {
+  color: #4ecca3;
+}
+
+/* Form Section */
+.form-section {
+  padding: 80px 0;
+  background-color: #f8fbff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.form-container {
+  display: flex;
+  gap: 40px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.form-info {
+  flex: 1;
+  background-color: #0B0B45;
+  color: white;
+  padding: 40px;
+}
+
+.form-info h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.form-info p {
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.contact-info {
+  margin-top: 40px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.contact-item i {
+  font-size: 24px;
+  color: #4ecca3;
+  margin-right: 15px;
+}
+
+.contact-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+
+.contact-item p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.consultation-form {
+  flex: 2;
+  padding: 40px;
+}
+
+.consultation-form h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #4ecca3;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.checkbox-group input {
+  width: auto;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+  color: #666;
+}
+
+.submit-btn {
+  background-color: #4ecca3;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(78, 204, 163, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #3db892;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(78, 204, 163, 0.4);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .form-container {
+    flex-direction: column;
+  }
+  
+  .form-info, .consultation-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-hero h1 {
+    font-size: 32px;
+  }
+}

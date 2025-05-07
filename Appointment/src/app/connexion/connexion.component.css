@@ -1,0 +1,279 @@
+/* Connexion Hero Section */
+.connexion-hero {
+  background-color: #0B0B45;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  position: relative;
+}
+
+.connexion-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/appointment-scheduling-solution.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.connexion-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.connexion-hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.breadcrumb {
+  color: #ccc;
+}
+
+.breadcrumb span:first-child {
+  color: #4ecca3;
+}
+
+/* Connexion Form Section */
+.connexion-section {
+  padding: 80px 0;
+  background-color: #f8fbff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  color: #0B0B45;
+  border-bottom: 3px solid #4ecca3;
+}
+
+/* Form Content */
+.form-content {
+  padding: 30px;
+  display: none;
+}
+
+.form-content.active {
+  display: block;
+}
+
+.form-content h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.form-content p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4ecca3;
+  outline: none;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.forgot-password {
+  color: #0B0B45;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.terms-checkbox input {
+  width: auto;
+  margin-right: 8px;
+  margin-top: 5px;
+}
+
+.terms-checkbox label {
+  font-size: 14px;
+  color: #666;
+}
+
+.terms-checkbox a {
+  color: #0B0B45;
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+.submit-btn {
+  background-color: #4ecca3;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(78, 204, 163, 0.3);
+}
+
+.submit-btn:hover {
+  background-color: #3db892;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(78, 204, 163, 0.4);
+}
+
+/* Social Login */
+.social-login {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.social-login p {
+  color: #666;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.social-login p::before,
+.social-login p::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.social-login p::before {
+  left: 0;
+}
+
+.social-login p::after {
+  right: 0;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+.social-btn.google {
+  color: #DB4437;
+}
+
+.social-btn.facebook {
+  color: #4267B2;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .connexion-hero h1 {
+    font-size: 32px;
+  }
+  
+  .form-container {
+    max-width: 100%;
+  }
+  
+  .social-buttons {
+    flex-direction: column;
+  }
+}
