@@ -1,0 +1,29 @@
+{
+  "name": "appointment-backend",
+  "version": "1.0.0",
+  "description": "Backend for Appointment Scheduling Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ../Appointment",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "db:init": "node scripts/db-init.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ecdsa-sig-formatter": "^1.0.11",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.10"
+  },
+  "keywords": []
+}
