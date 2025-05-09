@@ -10,6 +10,7 @@
 [build.environment]
   NODE_VERSION = "16"
 
+# Remove the Angular Runtime plugin entirely since it's not compatible with Angular 16
 [[plugins]]
   package = "@netlify/angular-runtime"
   [plugins.inputs]
