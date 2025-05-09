@@ -13,4 +13,5 @@
 [[plugins]]
   package = "@netlify/angular-runtime"
   [plugins.inputs]
-    angularConfigPath = "../../angular.json"
+    enabled = false
+    angularConfigPath = "angular.json"
