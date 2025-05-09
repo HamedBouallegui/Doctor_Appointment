@@ -28,7 +28,8 @@ const routes: Routes = [
   // Add these routes
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'appointment/new', component: AppointmentFormComponent },
+  { path: 'appointment/new', component: AppointmentFormComponent }
+
 ];
 
 @NgModule({
