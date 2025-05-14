@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,11 +20,12 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 // Add these imports
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './services/auth.service';
+import { ChatbotService } from './services/chatbot.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     SignupComponent,
     AppointmentFormComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [
     AuthService,
+    ChatbotService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

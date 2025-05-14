@@ -16,37 +16,37 @@ export class HomeComponent implements OnInit {
     {
       name: 'Dr. Brain Adam',
       speciality: 'Cardiology',
-      image: 'assets/images/appointment-scheduling-solution.png'
+      image: 'assets/images/download (1).jpeg'
     },
     {
       name: 'Dr. Jessica Brown',
       speciality: 'Cardiology',
-      image: 'assets/doctors/doctor2.jpg'
+      image: 'assets/images/download (2).jpeg'
     },
     {
       name: 'Dr. Labrien Brown',
       speciality: 'Dental',
-      image: 'assets/doctors/doctor3.jpg'
+      image: 'assets/images/download.jpeg'
     },
     {
       name: 'Dr. Noreain Waltar',
       speciality: 'Neurology',
-      image: 'assets/doctors/doctor4.jpg'
+      image: 'assets/images/images (1).jpeg'
     },
     {
       name: 'Dr. Rain Adam',
       speciality: 'Pediatric',
-      image: 'assets/doctors/doctor5.jpg'
+      image: 'assets/images/images (2).jpeg'
     },
     {
       name: 'Dr. Danzel Brown',
       speciality: 'Pulmonary',
-      image: 'assets/doctors/doctor6.jpg'
+      image: 'assets/images/images (3).jpeg'
     },
     {
       name: 'Dr. Fabrien Brown',
       speciality: 'Neurology',
-      image: 'assets/doctors/doctor7.jpg'
+      image: 'assets/images/images.jpeg'
     },
     {
       name: 'Dr. Horeain Kaltar',

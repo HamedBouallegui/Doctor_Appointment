@@ -1,1 +1,9 @@
 <router-outlet></router-outlet>
+
+<!-- Chatbot toggle button -->
+<button class="chatbot-toggle" (click)="toggleChatbot()" *ngIf="!showChatbot">
+  <i class="fa fa-comments"></i> Chat with us
+</button>
+
+<!-- Chatbot component -->
+<app-chatbot *ngIf="showChatbot" (close)="toggleChatbot()"></app-chatbot>

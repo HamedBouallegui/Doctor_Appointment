@@ -15,6 +15,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent},

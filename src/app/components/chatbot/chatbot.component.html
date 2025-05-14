@@ -1,0 +1,32 @@
+<div class="chatbot-container">
+  <div class="chatbot-header">
+    <h3>Doctor Assistant</h3>
+    <button class="close-btn" (click)="toggleChatbot()">&times;</button>
+  </div>
+  
+  <div class="chatbot-messages">
+    <div *ngFor="let message of messages" 
+         [ngClass]="{'message-bot': message.sender === 'bot', 'message-user': message.sender === 'user'}">
+      <div class="message-content">{{ message.text }}</div>
+    </div>
+    
+    <div *ngIf="isLoading" class="message-bot">
+      <div class="message-content typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="chatbot-input">
+    <input type="text" 
+           [(ngModel)]="newMessage" 
+           placeholder="Type your message..." 
+           (keyup.enter)="sendMessage()">
+    <button (click)="sendMessage()" [disabled]="isLoading">
+      <span *ngIf="!isLoading">Send</span>
+      <span *ngIf="isLoading">...</span>
+    </button>
+  </div>
+</div>

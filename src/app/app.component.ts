@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Appointment';
+  showChatbot = false;
+  
+  toggleChatbot() {
+    this.showChatbot = !this.showChatbot;
+  }
 }
