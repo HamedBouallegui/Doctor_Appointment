@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { AppointmentService } from '../services/appointment.service';
+import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { HttpHeaders } from '@angular/common/http';
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  date: string;
+}
 
 interface AppointmentStats {
   totalAppointments: number;
@@ -27,6 +41,7 @@ interface Appointment {
 })
 export class AdminComponent implements OnInit {
   currentService: string = 'overview';
+  users: User[] = [];
   loading: boolean = false;
   error: string = '';
   
@@ -40,18 +55,39 @@ export class AdminComponent implements OnInit {
   appointments: Appointment[] = [];
   filteredAppointments: Appointment[] = [];
 
-  constructor(private appointmentService: AppointmentService) {}
+  constructor(
+    private appointmentService: AppointmentService,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    // Check if user is admin
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log('Current user:', user); // Debug user object
+    console.log('Auth token:', this.authService.getToken()); // Debug token
+    
+    if (!user || user.role !== 'admin') {
+      this.error = 'You need admin privileges to access this page';
+      // Redirect to login instead of back to admin
+      this.router.navigate(['/login']);
+      return;
+    }
+    
     this.fetchAppointments();
+    if (this.currentService === 'users') {
+      this.fetchUsers();
+    }
   }
 
   fetchAppointments(): void {
     this.loading = true;
     this.error = '';
     
-    this.appointmentService.getUserAppointments().subscribe(
+    this.appointmentService.getAllAppointments().subscribe(
       (data) => {
+        console.log('Appointments data received:', data); // Add this line
         this.appointments = data;
         this.filteredAppointments = [...this.appointments];
         this.updateStats();
@@ -59,8 +95,8 @@ export class AdminComponent implements OnInit {
         this.loading = false;
       },
       (error) => {
-        console.error('Error fetching appointments:', error);
-        this.error = 'Failed to load appointments. Please try again.';
+        console.error('Error fetching appointments:', error.status, error.message);
+        this.error = `Failed to load appointments: ${error.status} ${error.message}`;
         this.loading = false;
       }
     );
@@ -84,7 +120,38 @@ export class AdminComponent implements OnInit {
 
   switchService(service: string) {
     this.currentService = service;
-    this.filterAppointmentsByService(service);
+    if (service === 'users') { // Changed from 'All Users' to 'users'
+      this.fetchUsers();
+    } else {
+      this.filterAppointmentsByService(service);
+    }
+  }
+
+  fetchUsers(): void {
+    this.loading = true;
+    this.error = '';
+    
+    // Fix the URL to match your API structure
+    this.http.get<User[]>(`${environment.apiUrl}/api/users`, { headers: this.getHeaders() }).subscribe(
+      (data) => {
+        this.users = data;
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+        this.error = 'Failed to load users. Please try again.';
+        this.loading = false;
+      }
+    );
+  }
+
+  // Add this method to get headers with auth token
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'x-auth-token': token || ''
+    });
   }
 
   filterAppointmentsByService(service: string): void {
@@ -114,7 +181,8 @@ export class AdminComponent implements OnInit {
       general: 'General Consultation Dashboard',
       dental: 'Dental Care Dashboard',
       pediatrics: 'Pediatrics Dashboard',
-      cardiology: 'Cardiology Dashboard'
+      cardiology: 'Cardiology Dashboard',
+      'users': 'User Management' // Changed from 'All Users' to 'users'
     };
     return titles[this.currentService] || 'Dashboard';
   }
@@ -155,5 +223,6 @@ export class AdminComponent implements OnInit {
 
   refreshData(): void {
     this.fetchAppointments();
+    this.fetchUsers(); // Add this line to always fetch users when refreshing
   }
 }

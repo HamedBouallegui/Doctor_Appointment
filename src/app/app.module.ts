@@ -16,11 +16,10 @@ import { FormulaireComponent } from './formulaire/formulaire.component';
 import { ContactComponent } from './contact/contact.component';
 
 // Add these imports for components in the components directory
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 import { AppointmentListComponent } from './components/appointment-list/appointment-list.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 
 // Add these imports
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -40,11 +39,10 @@ import { ChatbotService } from './services/chatbot.service';
     FormulaireComponent,
     ContactComponent,
     // Add these component declarations
-    LoginComponent,
-    SignupComponent,
     AppointmentFormComponent,
     AppointmentListComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    MyAppointmentsComponent
   ],
   imports: [
     BrowserModule,

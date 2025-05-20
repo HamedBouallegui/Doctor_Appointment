@@ -1,0 +1,50 @@
+<div class="my-appointments">
+  <h2>My Appointments</h2>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Loading appointments...
+  </div>
+
+  <div *ngIf="!loading && appointments.length === 0" class="no-appointments">
+    You don't have any appointments yet.
+  </div>
+
+  <div *ngIf="!loading && appointments.length > 0" class="appointments-list">
+    <div class="appointment-card" *ngFor="let appointment of appointments">
+      <div class="appointment-header">
+        <h3>{{ appointment.service }}</h3>
+        <span class="status" [ngClass]="getStatusClass(appointment.status)">
+          {{ appointment.status }}
+        </span>
+      </div>
+
+      <div class="appointment-details">
+        <div class="detail-row">
+          <span class="label">Date:</span>
+          <span class="value">{{ appointment.date | date:'mediumDate' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Time:</span>
+          <span class="value">{{ appointment.time }}</span>
+        </div>
+        <div class="detail-row" *ngIf="appointment.notes">
+          <span class="label">Notes:</span>
+          <span class="value">{{ appointment.notes }}</span>
+        </div>
+      </div>
+
+      <div class="appointment-actions">
+        <button 
+          class="cancel-btn" 
+          (click)="cancelAppointment(appointment._id)"
+          *ngIf="appointment.status === 'Pending'">
+          Cancel Appointment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

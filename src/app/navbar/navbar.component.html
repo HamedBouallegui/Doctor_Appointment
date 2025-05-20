@@ -24,5 +24,21 @@
         <li><a routerLink="/contact" routerLinkActive="active">Contact Us</a></li>
       </ul>
     <div class="nav-icons">
-        <button class="connexion-btn" routerLink="/connexion">Connexion</button>    </div>
+      <!-- Show connection button when not logged in -->
+      <button *ngIf="!isLoggedIn" class="connexion-btn" routerLink="/connexion">Connexion</button>
+      
+      <!-- Show profile menu when logged in -->
+      <div *ngIf="isLoggedIn" class="profile-menu">
+        <button class="profile-btn" (click)="toggleProfileMenu()">
+          <i class="fas fa-user-circle"></i>
+          <span>{{ user?.name || 'Profile' }}</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="profile-dropdown" *ngIf="showProfileMenu">
+          <a routerLink="/profile">My Profile</a>
+          <a routerLink="/my-appointments">My Appointments</a>
+          <a (click)="logout()" class="logout-btn">Logout</a>
+        </div>
+      </div>
+    </div>
   </nav>

@@ -11,7 +11,6 @@ export class AppointmentService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  // Get auth headers
   private getHeaders(): HttpHeaders {
     const token = this.authService.getToken();
     return new HttpHeaders({
@@ -20,22 +19,26 @@ export class AppointmentService {
     });
   }
 
-  // Create a new appointment
+  getAppointmentStats(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/stats`, { headers: this.getHeaders() });
+  }
+
+  getUserAppointments(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user`, { headers: this.getHeaders() });
+  }
+  
+  getAllAppointments(): Observable<any> {
+    return this.http.get(`${this.apiUrl}`, { headers: this.getHeaders() });
+  }
+
+  getAppointmentsByService(service: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/service/${service}`, { headers: this.getHeaders() });
+  }
+
   createAppointment(appointmentData: any): Observable<any> {
     return this.http.post(this.apiUrl, appointmentData, { headers: this.getHeaders() });
   }
 
-  // Get all appointments for the logged-in user
-  getUserAppointments(): Observable<any> {
-    return this.http.get(this.apiUrl, { headers: this.getHeaders() });
-  }
-
-  // Get a specific appointment
-  getAppointment(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
-  }
-
-  // Update an appointment
   updateAppointment(id: string, appointmentData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, appointmentData, { headers: this.getHeaders() });
   }

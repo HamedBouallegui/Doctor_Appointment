@@ -19,6 +19,9 @@
       <li [class.active]="currentService === 'cardiology'" (click)="switchService('cardiology')">
         <i class="dashboard-icon">🫀</i> Cardiology
       </li>
+      <li [class.active]="currentService === 'users'" (click)="switchService('users')">
+        <i class="dashboard-icon">👥</i> All Users
+      </li>
       <button type="submit" class="nav-links" routerLink="/">Log Out</button>
     </ul>
   </nav>
@@ -60,7 +63,7 @@
         </div>
       </div>
 
-      <div class="appointments-table">
+      <div class="appointments-table" *ngIf="currentService !== 'appointments'">
         <h2>Recent Appointments</h2>
         <div *ngIf="filteredAppointments.length === 0" class="no-appointments">
           No appointments found for this service.
@@ -79,7 +82,7 @@
           <tbody>
             <tr *ngFor="let appointment of filteredAppointments">
               <td>{{appointment.patientName}}</td>
-              <td>{{appointment.date | date:'mediumDate'}}</td>
+              <td>{{appointment.date}}</td>
               <td>{{appointment.time}}</td>
               <td>{{appointment.service}}</td>
               <td>
@@ -96,6 +99,39 @@
           </tbody>
         </table>
       </div>
+
+
+    <!-- Add this after the appointments-table div -->
+    <div class="users-table" *ngIf="currentService === 'users'">
+      <h2>Registered Users</h2>
+      <div *ngIf="users.length === 0" class="no-users">
+        No users found.
+      </div>
+      <table *ngIf="users.length > 0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phone || 'N/A'}}</td>
+            <td>{{user.role || 'User'}}</td>
+            <td>{{user.date}}</td>
+            <td>
+              <button class="action-btn view">View Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </main>
+  </div>
+</main>
 </div>
