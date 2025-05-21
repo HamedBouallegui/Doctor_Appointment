@@ -44,36 +44,27 @@ export class ConnexionComponent {
 
   // Method to handle login form submission
   login(email: string, password: string): void {
-    // Check if credentials match admin credentials
-    if (email === this.adminCredentials.email && password === this.adminCredentials.password) {
-      // Show welcome message for admin
-      alert('Welcome to dashboard');
-      // Navigate to home page
-      this.router.navigate(['/admin']);
-    } else {
-      // Use AuthService to authenticate user
-      const credentials = { email, password };
-      
-      this.authService.login(credentials).subscribe(
-        (response) => {
-          // Store token and user info in localStorage
-          localStorage.setItem('token', response.token);
-          
-          // Get user details
-          this.authService.getToken();
-          
-          // Show welcome message
+    // Use AuthService for all authentication, including admin
+    const credentials = { email, password };
+    
+    this.authService.login(credentials).subscribe(
+      (response) => {
+        // Store token and user info in localStorage is handled by AuthService
+        
+        // Check if user is admin and navigate accordingly
+        if (response.user && response.user.role === 'admin') {
+          alert('Welcome to dashboard');
+          this.router.navigate(['/admin']);
+        } else {
           alert('Welcome to home');
-          
-          // Navigate to home page
           this.router.navigate(['/']);
-        },
-        (error) => {
-          // Show invalid credentials message
-          alert('Invalid');
         }
-      );
-    }
+      },
+      (error) => {
+        // Show invalid credentials message
+        alert('Invalid credentials');
+      }
+    );
   }
 
   // Helper method to decode JWT token

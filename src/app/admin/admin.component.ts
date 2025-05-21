@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AppointmentService } from '../services/appointment.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Keep HttpHeaders if getHeaders is still used or adminService needs it indirectly
+// import { AppointmentService } from '../services/appointment.service'; // Commented out or removed
+import { AdminService } from '../services/admin.service'; // Assuming AdminService is created and located here
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { HttpHeaders } from '@angular/common/http';
 
 interface User {
   _id: string;
@@ -56,38 +56,48 @@ export class AdminComponent implements OnInit {
   filteredAppointments: Appointment[] = [];
 
   constructor(
-    private appointmentService: AppointmentService,
-    private http: HttpClient,
+    private adminService: AdminService, // Use AdminService instead of AppointmentService
+    private http: HttpClient, 
     private authService: AuthService,
     private router: Router
   ) {}
 
+  private refreshInterval: any;
+
   ngOnInit(): void {
-    // Check if user is admin
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    console.log('Current user:', user); // Debug user object
-    console.log('Auth token:', this.authService.getToken()); // Debug token
+    const user = this.authService.getUser(); 
+    if (!user || user.role !== 'admin') { 
+      this.router.navigate(['/connexion']); 
+      return; 
+    } 
+    this.fetchAllData();
     
-    if (!user || user.role !== 'admin') {
-      this.error = 'You need admin privileges to access this page';
-      // Redirect to login instead of back to admin
-      this.router.navigate(['/login']);
-      return;
-    }
-    
-    this.fetchAppointments();
-    if (this.currentService === 'users') {
-      this.fetchUsers();
+    // Set up an interval to refresh data every 30 seconds
+    this.refreshInterval = setInterval(() => {
+      this.fetchAllData();
+    }, 30000);
+  }
+
+  ngOnDestroy(): void {
+    // Clear the interval when component is destroyed
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
     }
   }
 
+  fetchAllData(): void { 
+    this.fetchAppointments(); 
+    this.fetchUsers(); // Fetch users on initial load if needed 
+  }
+
   fetchAppointments(): void {
+    console.log('Fetching appointments...');
     this.loading = true;
     this.error = '';
     
-    this.appointmentService.getAllAppointments().subscribe(
+    this.adminService.getAllAppointments().subscribe(
       (data) => {
-        console.log('Appointments data received:', data); // Add this line
+        console.log('Appointments received:', data);
         this.appointments = data;
         this.filteredAppointments = [...this.appointments];
         this.updateStats();
@@ -95,7 +105,7 @@ export class AdminComponent implements OnInit {
         this.loading = false;
       },
       (error) => {
-        console.error('Error fetching appointments:', error.status, error.message);
+        console.error('Error fetching appointments:', error);
         this.error = `Failed to load appointments: ${error.status} ${error.message}`;
         this.loading = false;
       }
@@ -128,29 +138,47 @@ export class AdminComponent implements OnInit {
   }
 
   fetchUsers(): void {
+    // const token = this.authService.getToken(); // Token check is now implicitly handled by AdminService or not done here
+
+    // if (!token) { // Removed explicit token check
+    //   this.error = 'Authentication token is missing. Cannot fetch users. Please log in again.';
+    //   this.loading = false;
+    //   console.error('fetchUsers aborted: No token found.');
+    //   return; 
+    // }
+
     this.loading = true;
     this.error = '';
     
-    // Fix the URL to match your API structure
-    this.http.get<User[]>(`${environment.apiUrl}/api/users`, { headers: this.getHeaders() }).subscribe(
+    this.adminService.getAllUsers().subscribe( // Changed to adminService and getAllUsers
       (data) => {
         this.users = data;
         this.loading = false;
       },
       (error) => {
-        console.error('Error fetching users:', error);
-        this.error = 'Failed to load users. Please try again.';
+        console.error('Error fetching users:', error); 
+        if (error.status === 401) { 
+          this.error = 'Session expired. Please log in again.'; 
+          this.authService.logout(); 
+          // Change all instances of '/login' to '/connexion'
+          // For example:
+          this.router.navigate(['/connexion']);
+        } else { 
+          this.error = 'Failed to load users. Please try again.'; 
+        } 
         this.loading = false;
       }
     );
   }
 
-  // Add this method to get headers with auth token
   private getHeaders(): HttpHeaders {
     const token = this.authService.getToken();
+    // It's crucial that if a token is required, an empty string is not sufficient.
+    // The backend check `if (!token)` will treat an empty string as no token.
+    // The guard in fetchUsers() is the primary defense.
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'x-auth-token': token || ''
+      'x-auth-token': token || '' 
     });
   }
 
@@ -198,31 +226,49 @@ export class AdminComponent implements OnInit {
   }
 
   updateAppointmentStatus(id: string, updatedAppointment: any): void {
-    this.appointmentService.updateAppointment(id, updatedAppointment).subscribe(
+    this.loading = true;
+    this.error = '';
+
+    // Assuming adminService will have an updateAppointment method similar to appointmentService
+    // If not, this line needs to be adjusted or use appointmentService for this specific call.
+    // For now, I'll assume adminService handles this too.
+    this.adminService.updateAppointment(id, updatedAppointment).subscribe( // Changed to adminService
       (response) => {
-        // Update the appointment in the local array
+        // Find the index of the appointment to update
         const index = this.appointments.findIndex(app => app._id === id);
         if (index !== -1) {
-          this.appointments[index] = response;
-          this.filterAppointmentsByService(this.currentService);
-          this.updateStats();
+          this.appointments[index] = { ...this.appointments[index], ...response }; // Update with response from server
         }
+        // Also update filteredAppointments if the updated appointment is in the current view
+        const filteredIndex = this.filteredAppointments.findIndex(app => app._id === id);
+        if (filteredIndex !== -1) {
+          this.filteredAppointments[filteredIndex] = { ...this.filteredAppointments[filteredIndex], ...response };
+        }
+        
+        this.updateStats(); // Recalculate stats after status change
+        this.loading = false;
+        // Optionally, show a success message
       },
       (error) => {
-        console.error('Error updating appointment:', error);
-        this.error = 'Failed to update appointment status. Please try again.';
+        console.error('Error updating appointment status:', error);
+        this.error = `Failed to update appointment: ${error.message}`;
+        this.loading = false;
       }
     );
   }
 
-  viewAppointment(appointment: Appointment): void {
-    // Implementation for viewing appointment details
-    // You could open a modal or navigate to a details page
-    console.log('Viewing appointment:', appointment);
+  refreshData(): void {
+    this.fetchAllData(); // Changed to call fetchAllData
+    // if (this.currentService === 'users') { // This logic is now inside fetchAllData
+    //   this.fetchUsers();
+    // }
   }
 
-  refreshData(): void {
-    this.fetchAppointments();
-    this.fetchUsers(); // Add this line to always fetch users when refreshing
+  viewAppointment(appointment: Appointment): void {
+    // Implement logic to view or edit appointment details
+    // This could navigate to a new page or open a modal
+    console.log('View/Update appointment:', appointment);
+    // Example: Navigate to an edit page
+    // this.router.navigate(['/admin/edit-appointment', appointment._id]);
   }
 }

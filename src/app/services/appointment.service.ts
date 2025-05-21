@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
-  private apiUrl = 'http://localhost:5001/api/appointments'; // Updated to use port 5001
+  private apiUrl = environment.apiUrl + '/api/appointments';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

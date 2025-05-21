@@ -45,7 +45,8 @@ export class FormulaireComponent {
       service: appointmentData.department,
       date: appointmentData.preferredDate ? new Date(appointmentData.preferredDate).toISOString() : '',
       time: appointmentData.preferredTime,
-      notes: appointmentData.symptoms || ''
+      notes: appointmentData.symptoms || '',
+      status: 'Pending' // Explicitly set status
     };
   
     console.log('Appointment payload:', appointmentPayload);

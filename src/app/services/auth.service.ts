@@ -31,7 +31,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth`, credentials).pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('user', JSON.stringify(response.user)); // User role is stored here
         this.authStateSubject.next(true);
       })
     );
