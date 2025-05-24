@@ -264,11 +264,18 @@ export class AdminComponent implements OnInit {
     // }
   }
 
-  viewAppointment(appointment: Appointment): void {
-    // Implement logic to view or edit appointment details
-    // This could navigate to a new page or open a modal
-    console.log('View/Update appointment:', appointment);
-    // Example: Navigate to an edit page
-    // this.router.navigate(['/admin/edit-appointment', appointment._id]);
+  // ... existing code ...
+
+viewAppointment(appointment: Appointment): void {
+  const updatedAppointment = {
+    ...appointment,
+    date: prompt('Enter notes or updates for this appointment:', appointment.date || '')
+  };
+  
+  if (updatedAppointment.date !== null) {
+    this.updateAppointmentStatus(appointment._id, updatedAppointment);
   }
+}
+
+// ... existing code ...
 }

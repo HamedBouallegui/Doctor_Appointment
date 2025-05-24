@@ -32,7 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 5px 50px;
   background: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -158,4 +158,20 @@
   border-top: 1px solid #eee;
   margin-top: 5px;
   padding-top: 10px;
+}
+
+/* Add this to your existing CSS */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }

@@ -16,12 +16,12 @@ export class HomeComponent implements OnInit {
     {
       name: 'Dr. Brain Adam',
       speciality: 'Cardiology',
-      image: 'assets/images/download (1).jpeg'
+      image: 'assets/images/download1.jpeg'
     },
     {
       name: 'Dr. Jessica Brown',
       speciality: 'Cardiology',
-      image: 'assets/images/download (2).jpeg'
+      image: 'assets/images/download2.jpeg'
     },
     {
       name: 'Dr. Labrien Brown',
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Dr. Noreain Waltar',
       speciality: 'Neurology',
-      image: 'assets/images/images (1).jpeg'
+      image: 'assets/images/images1.jpeg'
     },
     {
       name: 'Dr. Rain Adam',
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Dr. Horeain Kaltar',
       speciality: 'Pulmonary',
-      image: 'assets/doctors/doctor8.jpg'
+      image: 'assets/images/images1.jpeg'
     }
   ];
   

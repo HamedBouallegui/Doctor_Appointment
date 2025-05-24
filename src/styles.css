@@ -1,5 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-bg: #ffffff;
+  --primary-text: #333333;
+  --nav-bg: #ffffff;
+  --top-bar-bg: #0B0B45;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  --border-color: #eaeaea;
+}
+
+.dark-theme {
+  --primary-bg: #1a1a1a;
+  --primary-text: #ffffff;
+  --nav-bg: #2d2d2d;
+  --top-bar-bg: #000033;
+  --card-bg: #2d2d2d;
+  --card-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  --border-color: #444444;
+}
+
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

@@ -264,7 +264,7 @@ input, select {
 .hero-slider {
   position: relative;
   height: 500px;
-  background-image: url('../../assets/images/appointment-scheduling-solution.png');
+  background-image: url('../../assets/images/appointment-scheduling-solution-removebg-preview.png');
   background-size: cover;
   background-position: center;
   color: white;
@@ -373,7 +373,7 @@ input, select {
   flex: 1;
   position: relative;
   height: 450px;
-  background-image: url('../../assets/images/appointment-scheduling-solution.png');
+  background-image: url('../../assets/images/appointment-scheduling-solution-removebg-preview.png');
   background-size: contain;
   background-position: center right;
   background-repeat: no-repeat;
