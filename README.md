@@ -22,3 +22,16 @@ Here are some previews of the app:
 
 <img src="src/assets/images/Screenshot 2025-10-31 151723.png" width="30%" /><br /> <br />
 
+🛠️ Tech Stack
+
+🖥️ Frontend
+Framework: Angular
+Styling: Bootstrap / Tailwind CSS
+AI Integration: Chatbot component with OpenAI API
+
+⚙️ Backend
+Runtime: Node.js
+Framework: Express.js
+Database: MongoDB (Mongoose ORM)
+Authentication: JSON Web Token (JWT)
+
