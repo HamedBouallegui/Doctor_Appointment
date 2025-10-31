@@ -1,27 +1,24 @@
-# Appointment
+🩺 Doctor Appointment System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+A full-stack web application for booking doctor appointments online, featuring an integrated AI chatbot assistant that helps users find doctors, schedule appointments, and get quick answers.
+Built using Angular, Node.js, and MongoDB.
 
-## Development server
+✨ Features
+👨‍⚕️ Browse doctors by specialty
+🗓️ Book and manage appointments
+🔐 Secure login and registration (JWT Authentication)
+💬 AI Chatbot for help and instant support
+📊 Admin dashboard for managing doctors and users
+📱 Responsive UI for desktop and mobile
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🖼️ Screenshots
+Here are some previews of the app:
 
-## Code scaffolding
+🏠 Home Page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<img src="src/assets/images/Screenshot 2025-10-31 151518.png" width="30%" /><br /> <br />
 
-## Build
+🩺 Book a Consutation 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<img src="src/assets/images/Screenshot 2025-10-31 151723.png" width="30%" /><br /> <br />
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
